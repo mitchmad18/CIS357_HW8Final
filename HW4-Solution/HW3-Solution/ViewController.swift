@@ -19,6 +19,7 @@ class ViewController: UIViewController, SettingsViewControllerDelegate {
     var currentMode : CalculatorMode = .Length
     
     var entries : [Conversion] = []
+    var numEntries: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,7 +86,8 @@ class ViewController: UIViewController, SettingsViewControllerDelegate {
                     dest?.text = "\(toVal)"
                 }
             }
-            var newConvert = Conversion(fromVal: fromField.text, toVal: toField.text?, mode: currentMode, fromUnits: fromUnits.text!,toUnits: toUnits.text!, timestamp: Date())
+            entries[numEntries] = Conversion(fromVal: Double(fromField.text!)!, toVal: Double(toField.text!)!, mode: currentMode, fromUnits: fromUnits.text!,toUnits: toUnits.text!, timestamp: Date())
+            numEntries+=1
         }
         self.view.endEditing(true)
     }
