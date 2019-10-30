@@ -267,6 +267,10 @@
                             <outlet property="delegate" destination="9aG-so-RlH" id="mWb-LK-lGh"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="historyTableView" destination="aKT-Rb-uDA" id="cX0-mJ-6wn"/>
+                        <outlet property="tableView" destination="aKT-Rb-uDA" id="hV5-iW-Tu6"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w1V-Ft-xU8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -71,6 +71,9 @@ class ViewController: UIViewController, SettingsViewControllerDelegate {
                     let toVal = fromVal * lengthConversionTable[convKey]!;
                     dest?.text = "\(toVal)"
                 }
+                entries[numEntries] = Conversion(fromVal: Double(fromField.text!)!, toVal: Double(toField.text!)!, mode: currentMode, fromUnits: fromUnits.text!,toUnits: toUnits.text!, timestamp: Date())
+                numEntries+=1
+                
             case .Volume:
                 var fUnits, tUnits : VolumeUnit
                 if dest == toField {
@@ -85,9 +88,9 @@ class ViewController: UIViewController, SettingsViewControllerDelegate {
                     let toVal = fromVal * volumeConversionTable[convKey]!;
                     dest?.text = "\(toVal)"
                 }
+                entries[numEntries] = Conversion(fromVal: Double(fromField.text!)!, toVal: Double(toField.text!)!, mode: currentMode, fromUnits: fromUnits.text!,toUnits: toUnits.text!, timestamp: Date())
+                numEntries+=1
             }
-            entries[numEntries] = Conversion(fromVal: Double(fromField.text!)!, toVal: Double(toField.text!)!, mode: currentMode, fromUnits: fromUnits.text!,toUnits: toUnits.text!, timestamp: Date())
-            numEntries+=1
         }
         self.view.endEditing(true)
     }
