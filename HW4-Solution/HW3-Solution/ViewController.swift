@@ -71,8 +71,9 @@ class ViewController: UIViewController, SettingsViewControllerDelegate {
                     let toVal = fromVal * lengthConversionTable[convKey]!;
                     dest?.text = "\(toVal)"
                 }
-                entries[numEntries] = Conversion(fromVal: Double(fromField.text!)!, toVal: Double(toField.text!)!, mode: currentMode, fromUnits: fromUnits.text!,toUnits: toUnits.text!, timestamp: Date())
-                numEntries+=1
+//                entries[numEntries] = Conversion(fromVal: Double(fromField.text!)!, toVal: Double(toField.text!)!, mode: currentMode, fromUnits: fromUnits.text!,toUnits: toUnits.text!, timestamp: Date())
+//                numEntries+=1
+                entries.append(Conversion(fromVal: Double(fromField.text!)!, toVal: Double(toField.text!)!, mode: currentMode, fromUnits: fromUnits.text!,toUnits: toUnits.text!, timestamp: Date()))
                 
             case .Volume:
                 var fUnits, tUnits : VolumeUnit
@@ -88,14 +89,15 @@ class ViewController: UIViewController, SettingsViewControllerDelegate {
                     let toVal = fromVal * volumeConversionTable[convKey]!;
                     dest?.text = "\(toVal)"
                 }
-                entries[numEntries] = Conversion(fromVal: Double(fromField.text!)!, toVal: Double(toField.text!)!, mode: currentMode, fromUnits: fromUnits.text!,toUnits: toUnits.text!, timestamp: Date())
-                numEntries+=1
+//                entries[numEntries] = Conversion(fromVal: Double(fromField.text!)!, toVal: Double(toField.text!)!, mode: currentMode, fromUnits: fromUnits.text!,toUnits: toUnits.text!, timestamp: Date())
+//                numEntries+=1
+                entries.append(Conversion(fromVal: Double(fromField.text!)!, toVal: Double(toField.text!)!, mode: currentMode, fromUnits: fromUnits.text!,toUnits: toUnits.text!, timestamp: Date()))
             }
         }
         self.view.endEditing(true)
     }
     
-    @IBAction func clearPressed(_ sender: UIButton) {
+    @IBAction func clearPressed(_ sender: Any) {
         self.fromField.text = ""
         self.toField.text = ""
         self.view.endEditing(true)
@@ -132,8 +134,8 @@ class ViewController: UIViewController, SettingsViewControllerDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "settingsSegue" {
-            clearPressed(sender as! UIButton)
-            if let  target = segue.destination.children[0] as? SettingsViewController {
+            clearPressed(sender as! UIBarButtonItem)
+            if let  target = segue.destination as? SettingsViewController {
                 target.mode = currentMode
                 target.fUnits = fromUnits.text
                 target.tUnits = toUnits.text
@@ -141,8 +143,9 @@ class ViewController: UIViewController, SettingsViewControllerDelegate {
             }
         }
         else if segue.identifier == "historySegue" {
-            if let target = segue.destination.children[0] as? HistoryTableViewController {
+            if let target = segue.destination as? HistoryTableViewController {
                 target.entries = entries
+
             }
         }
     }
