@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, SettingsViewControllerDelegate {
+class ViewController: UIViewController, SettingsViewControllerDelegate, HistoryTableViewControllerDelegate {
 
     @IBOutlet weak var fromField: UITextField!
     @IBOutlet weak var toField: UITextField!
@@ -18,7 +18,10 @@ class ViewController: UIViewController, SettingsViewControllerDelegate {
     
     var currentMode : CalculatorMode = .Length
     
-    var entries : [Conversion] = []
+    var entries : [Conversion] = [
+        Conversion(fromVal: 1, toVal: 1769, mode: .Length, fromUnits: LengthUnit.Miles.rawValue, toUnits: LengthUnit.Yards.rawValue, timestamp: Date.distantPast),
+        Conversion(fromVal: 1, toVal: 4, mode: .Volume, fromUnits: VolumeUnit.Gallons.rawValue, toUnits: VolumeUnit.Quarts.rawValue, timestamp: Date.distantFuture)]
+    
     var numEntries: Int = 0
     
     override func viewDidLoad() {
@@ -160,6 +163,10 @@ class ViewController: UIViewController, SettingsViewControllerDelegate {
     {
         self.fromUnits.text = fromUnits.rawValue
         self.toUnits.text = toUnits.rawValue
+    }
+    
+    func selectEntry(entry: Conversion) {
+        
     }
 }
 
