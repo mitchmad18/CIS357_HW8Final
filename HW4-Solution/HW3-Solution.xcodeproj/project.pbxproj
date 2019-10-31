@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		332E0224236B8BCE007AFC91 /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332E0223236B8BCE007AFC91 /* HistoryTableViewCell.swift */; };
 		333B54D323674B7600FE7B27 /* Conversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333B54D223674B7600FE7B27 /* Conversion.swift */; };
 		33CE28D82367600600389B42 /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CE28D72367600600389B42 /* HistoryTableViewController.swift */; };
 		9E1E65472142BF8800F4E8CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1E65462142BF8800F4E8CB /* AppDelegate.swift */; };
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		332E0223236B8BCE007AFC91 /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
 		333B54D223674B7600FE7B27 /* Conversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversion.swift; sourceTree = "<group>"; };
 		33CE28D72367600600389B42 /* HistoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
 		9E1E65432142BF8800F4E8CB /* HW3-Solution.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HW3-Solution.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -127,6 +129,7 @@
 				9EE845AF215BE2AD0091EFE4 /* ConversionCalcButton.swift */,
 				333B54D223674B7600FE7B27 /* Conversion.swift */,
 				33CE28D72367600600389B42 /* HistoryTableViewController.swift */,
+				332E0223236B8BCE007AFC91 /* HistoryTableViewCell.swift */,
 			);
 			path = "HW3-Solution";
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 				9E1E65752142C38700F4E8CB /* DecimalMinusTextField.swift in Sources */,
 				9EE845AE215BE2820091EFE4 /* ConversionCalcLabel.swift in Sources */,
 				9E1E65492142BF8800F4E8CB /* ViewController.swift in Sources */,
+				332E0224236B8BCE007AFC91 /* HistoryTableViewCell.swift in Sources */,
 				9E1E65792147122200F4E8CB /* SettingsViewController.swift in Sources */,
 				9E1E65472142BF8800F4E8CB /* AppDelegate.swift in Sources */,
 			);

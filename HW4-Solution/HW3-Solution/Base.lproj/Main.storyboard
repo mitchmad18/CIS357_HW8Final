@@ -261,6 +261,62 @@
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FancyCell" rowHeight="80" id="16F-sd-9cB" customClass="HistoryTableViewCell" customModule="HW3_Solution" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="72" width="375" height="80"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="16F-sd-9cB" id="3q8-SR-igI">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HvC-Yz-VLx">
+                                            <rect key="frame" x="16" y="9" width="60" height="60"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9kn-ke-Tcj">
+                                            <rect key="frame" x="137.5" y="9" width="221.5" height="23"/>
+                                            <attributedString key="attributedText">
+                                                <fragment content="Conversion info goes here">
+                                                    <attributes>
+                                                        <font key="NSFont" size="19" name=".AppleSystemUIFont"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n1L-Nn-tVS">
+                                            <rect key="frame" x="183" y="50" width="176" height="16"/>
+                                            <attributedString key="attributedText">
+                                                <fragment content="Timestamp goes here!">
+                                                    <attributes>
+                                                        <font key="NSFont" size="13" name=".AppleSystemUIFont"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="HvC-Yz-VLx" firstAttribute="top" secondItem="3q8-SR-igI" secondAttribute="top" constant="9" id="2ZY-JF-G6r"/>
+                                        <constraint firstItem="HvC-Yz-VLx" firstAttribute="leading" secondItem="3q8-SR-igI" secondAttribute="leading" constant="16" id="APG-lm-5zj"/>
+                                        <constraint firstAttribute="trailing" secondItem="9kn-ke-Tcj" secondAttribute="trailing" constant="16" id="F5X-HT-1dv"/>
+                                        <constraint firstItem="9kn-ke-Tcj" firstAttribute="leading" secondItem="HvC-Yz-VLx" secondAttribute="trailing" constant="8" id="P8r-HY-nSg"/>
+                                        <constraint firstItem="n1L-Nn-tVS" firstAttribute="trailing" secondItem="3q8-SR-igI" secondAttribute="trailingMargin" id="Tea-mp-sNU"/>
+                                        <constraint firstItem="9kn-ke-Tcj" firstAttribute="top" secondItem="3q8-SR-igI" secondAttribute="top" constant="9" id="bGq-iW-psP"/>
+                                        <constraint firstItem="n1L-Nn-tVS" firstAttribute="top" secondItem="9kn-ke-Tcj" secondAttribute="bottom" constant="18" id="bWq-Of-M8a"/>
+                                        <constraint firstItem="n1L-Nn-tVS" firstAttribute="leading" secondItem="HvC-Yz-VLx" secondAttribute="trailing" constant="53.5" id="d3K-Mz-BoA"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="n1L-Nn-tVS" secondAttribute="bottom" constant="3" id="dwE-bz-rde"/>
+                                        <constraint firstItem="n1L-Nn-tVS" firstAttribute="trailing" secondItem="3q8-SR-igI" secondAttribute="trailingMargin" id="kz0-qX-52x"/>
+                                        <constraint firstItem="9kn-ke-Tcj" firstAttribute="leading" secondItem="HvC-Yz-VLx" secondAttribute="trailing" constant="8" id="nO0-Go-rk2"/>
+                                        <constraint firstAttribute="bottom" secondItem="HvC-Yz-VLx" secondAttribute="bottom" constant="10.5" id="sI0-qw-hZO"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="conversionLabel" destination="9kn-ke-Tcj" id="hOf-SQ-145"/>
+                                    <outlet property="thumbnail" destination="HvC-Yz-VLx" id="Ztb-qh-yOB"/>
+                                    <outlet property="timestampLabel" destination="n1L-Nn-tVS" id="lAx-5r-pKp"/>
+                                </connections>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="9aG-so-RlH" id="3B5-re-CpS"/>
@@ -274,7 +330,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w1V-Ft-xU8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-390" y="134"/>
+            <point key="canvasLocation" x="-391.19999999999999" y="133.5832083958021"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="R3v-oZ-AYu">

@@ -148,6 +148,7 @@ class ViewController: UIViewController, SettingsViewControllerDelegate, HistoryT
         else if segue.identifier == "historySegue" {
             if let target = segue.destination as? HistoryTableViewController {
                 target.entries = entries
+                target.historyDelegate = self
 
             }
         }
@@ -166,7 +167,10 @@ class ViewController: UIViewController, SettingsViewControllerDelegate, HistoryT
     }
     
     func selectEntry(entry: Conversion) {
-        
+        self.fromField.text = String(entry.fromVal)
+        self.toField.text = String(entry.toVal)
+        self.fromUnits.text = entry.fromUnits
+        self.toUnits.text = entry.toUnits
     }
 }
 

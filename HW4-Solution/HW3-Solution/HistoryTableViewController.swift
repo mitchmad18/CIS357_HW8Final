@@ -13,7 +13,14 @@ class HistoryTableViewController: UITableViewController{
 
     @IBOutlet var historyTableView: UITableView!
     
+    //@IBOutlet weak var thumbnail: UIView!
+    //@IBOutlet weak var conversionLabel: UILabel!
+    //@IBOutlet weak var timestampLabel: UILabel!
+    
     var entries : [Conversion]? = []
+    
+    var historyDelegate:HistoryTableViewControllerDelegate?
+
     
     //var tableViewData: [(sectionHeader: String, entries: [Conversion])]? {
     //    didSet {
@@ -21,7 +28,7 @@ class HistoryTableViewController: UITableViewController{
     //            self.historyTableView.reloadData()
     //        }
     //    }
-    //}
+    //}x
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,24 +37,66 @@ class HistoryTableViewController: UITableViewController{
         self.sortIntoSections(entries: (self.entries)!)
     }
     
+//    override func viewWillDisappear(_ animated: Bool) {
+//        if let del = self.historyDelegate {
+//            //FIXME: need this to know which entry is currently selected
+//            del.selectEntry(entry: (entries?[0])!)
+//        }
+//
+//    }
+
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         //return self.tableViewData?.count ?? 0
-        return 1
+        //return 1
+        if let data=self.tableViewData {
+            return data.count
+        }
+        else {
+            return 0
+        }
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // use the historyDelegate to report back entry selected to the calculator scene
+        if let del = self.historyDelegate {
+            let conv = entries![indexPath.row]
+            del.selectEntry(entry: conv)
+        }
+        
+        // this pops back to the main calculator
+        _ = self.navigationController?.popViewController(animated: true)
+    }
+    
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //return self.tableViewData?[section].entries.count ?? 0
         
-        if let entry = self.entries{
-            return entry.count
+        //if let entry = self.entries{
+         //   return entry.count
+        //}
+        //else{
+        //    return 0
+        //}
+        
+        if let sectionInfo = self.tableViewData?[section] {
+            return sectionInfo.entries.count
         }
-        else{
+        else {
             return 0
         }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath)
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FancyCell", for: indexPath) as! HistoryTableViewCell
+        if let entry = self.tableViewData?[indexPath.section].entries[indexPath.row] {
+            cell.conversionLabel.text = "\(entry.fromVal) \(entry.fromUnits) = \(entry.toVal) \(entry.toUnits)"
+            cell.timestampLabel.text = "\(entry.timestamp.description)"
+            cell.thumbnail.image = UIImage(imageLiteralResourceName: entry.mode == .Volume ? "volume_icon" : "length_icon")
+        }
+        return cell
+        //let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath)
         
         //guard let entry =
         //    tableViewData?[indexPath.section].entries[indexPath.row] else {
@@ -56,10 +105,10 @@ class HistoryTableViewController: UITableViewController{
         
         //let dateFormatter = DateFormatter()
         
-        if let entry = self.entries?[indexPath.row]{
-            cell.textLabel?.text = String(entry.fromVal) + " " + entry.fromUnits + " = " + String(entry.toVal) + " " + entry.toUnits
-            cell.detailTextLabel?.text = entry.timestamp.short
-        }
+        //if let entry = self.entries?[indexPath.row]{
+        //    cell.textLabel?.text = String(entry.fromVal) + " " + entry.fromUnits + " = " + String(entry.toVal) + " " + entry.toUnits
+        //    cell.detailTextLabel?.text = entry.timestamp.short
+        //}
         
 //        guard let entry = tableViewData?[indexPath.section].entries[indexPath.row]
 //            else {
@@ -73,15 +122,14 @@ class HistoryTableViewController: UITableViewController{
 //        cell.textLabel?.text = text1
 //        cell.detailTextLabel?.text = text2
         
-        return cell
+        //return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let entry = tableViewData?[indexPath.section].entries[indexPath.row] else {
-            return
-        }
-        print("Selected\(String(describing: entry.fromUnits))")
-    }
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        guard let entry = tableViewData?[indexPath.section].entries[indexPath.row] else {
+//            return
+//        }
+//    }
     
     
     //Code added for part 2
@@ -129,6 +177,29 @@ class HistoryTableViewController: UITableViewController{
         
         self.tableViewData = tmpData
     }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return self.tableViewData?[section].sectionHeader
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80.0
+    }
+    
+    override func tableView(_ tableView:UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.textColor = BACKGROUND_COLOR
+        header.contentView.backgroundColor = FOREGROUND_COLOR
+    }
+    
+    //USE AFTER HISTORY DELEGATE IS FIXED
+    //override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    //   if let del = self.historyDelegate {
+     //       if let conv = self.tableViewData?[indexPath.section].entries[indexPath.row] {
+    //            del.selectEntry(entry: conv)
+    //        }
+    //    }
+    //}
     
     
 }
