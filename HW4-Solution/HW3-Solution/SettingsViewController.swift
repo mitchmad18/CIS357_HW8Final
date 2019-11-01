@@ -111,7 +111,6 @@ class SettingsViewController: UIViewController {
     @IBAction func savePressed(_ sender: UIBarButtonItem) {
         
         if let del = self.delegate {
-//            del.settingsChanged(distanceUnits: self.dUnits!, bearingUnits: self.bUnits!)
             switch(mode) {
             case .Length:
                 del.settingsChanged(fromUnits: LengthUnit(rawValue: fromUnits.text!)!, toUnits: LengthUnit(rawValue: toUnits.text!)!)
